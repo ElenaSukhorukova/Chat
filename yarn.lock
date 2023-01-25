@@ -5,13 +5,6 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@doabit/semantic-ui-sass@npm:^2.4.5":
-  version: 2.4.5
-  resolution: "@doabit/semantic-ui-sass@npm:2.4.5"
-  checksum: 9d66d646e17e7a1f885b26edda9f6a1a3fc7d80a209c38793336ae5243a1557d66d7bb7007d7e92c63d4cc72592e41bfe87a627ea4a899a1f40561d0d471cd7c
-  languageName: node
-  linkType: hard
-
 "@esbuild/android-arm64@npm:0.17.4":
   version: 0.17.4
   resolution: "@esbuild/android-arm64@npm:0.17.4"
@@ -217,6 +210,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.11.6":
+  version: 2.11.6
+  resolution: "@popperjs/core@npm:2.11.6"
+  checksum: 47fb328cec1924559d759b48235c78574f2d71a8a6c4c03edb6de5d7074078371633b91e39bbf3f901b32aa8af9b9d8f82834856d2f5737a23475036b16817f0
+  languageName: node
+  linkType: hard
+
 "@rails/actioncable@npm:^7.0":
   version: 7.0.4
   resolution: "@rails/actioncable@npm:7.0.4"
@@ -289,12 +289,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "app@workspace:."
   dependencies:
-    "@doabit/semantic-ui-sass": ^2.4.5
     "@hotwired/stimulus": ^3.2.1
     "@hotwired/turbo-rails": ^7.2.4
+    "@popperjs/core": ^2.11.6
+    bootstrap: ^5.2.3
+    bootstrap-icons: ^1.10.3
     esbuild: ^0.17.4
-    jquery: ^3.6.3
-    popper.js: ^1.16.1
     sass: ^1.57.1
   languageName: unknown
   linkType: soft
@@ -327,6 +327,22 @@ __metadata:
   version: 2.2.0
   resolution: "binary-extensions@npm:2.2.0"
   checksum: ccd267956c58d2315f5d3ea6757cf09863c5fc703e50fbeb13a7dc849b812ef76e3cf9ca8f35a0c48498776a7478d7b4a0418e1e2b8cb9cb9731f2922aaad7f8
+  languageName: node
+  linkType: hard
+
+"bootstrap-icons@npm:^1.10.3":
+  version: 1.10.3
+  resolution: "bootstrap-icons@npm:1.10.3"
+  checksum: bef7f83ce09f0ae0b2a92d61b69f3c6d04ba2307e9051ab3f175613837e0dc5252d22e2b3a0403b59995be4e06ebe00f17d0335be6f2cffdbfdbefa9268b6abd
+  languageName: node
+  linkType: hard
+
+"bootstrap@npm:^5.2.3":
+  version: 5.2.3
+  resolution: "bootstrap@npm:5.2.3"
+  peerDependencies:
+    "@popperjs/core": ^2.11.6
+  checksum: 0211805dec6a190c0911d142966df30fdb4b4139a04cc6c23dd83c6045ea3cb0a966b360ab2e701e7b3ad96ff01e05fdc0914be97b41bd876b11e457a8bdc6a3
   languageName: node
   linkType: hard
 
@@ -834,13 +850,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:^3.6.3":
-  version: 3.6.3
-  resolution: "jquery@npm:3.6.3"
-  checksum: 0fd366bdcaa0c84a7a8751ce20f8192290141913978b5059574426d9b01f4365daa675f95aab3eec94fd794d27b08d32078a2236bef404b8ba78073009988ce6
-  languageName: node
-  linkType: hard
-
 "lru-cache@npm:^6.0.0":
   version: 6.0.0
   resolution: "lru-cache@npm:6.0.0"
@@ -1087,13 +1096,6 @@ __metadata:
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
   checksum: 050c865ce81119c4822c45d3c84f1ced46f93a0126febae20737bd05ca20589c564d6e9226977df859ed5e03dc73f02584a2b0faad36e896936238238b0446cf
-  languageName: node
-  linkType: hard
-
-"popper.js@npm:^1.16.1":
-  version: 1.16.1
-  resolution: "popper.js@npm:1.16.1"
-  checksum: c56ae5001ec50a77ee297a8061a0221d99d25c7348d2e6bcd3e45a0d0f32a1fd81bca29d46cb0d4bdf13efb77685bd6a0ce93f9eb3c608311a461f945fffedbe
   languageName: node
   linkType: hard
 
