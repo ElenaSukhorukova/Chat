@@ -5,3 +5,8 @@ ru:
   global:
     menu:
       chatroom: Раздел чата
+      messages: Сообщения
+      account: Профиль
+      log_out: Выйти
+      log_in: Войти
+      sign_up: Зарегистрироваться

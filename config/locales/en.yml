@@ -5,3 +5,8 @@ en:
   global:
     menu:
       chatroom: Chatroom
+      messages: Messages
+      account: Account
+      log_out: Log out
+      log_in: Log in
+      sign_up: Sign up
