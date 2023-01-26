@@ -23,3 +23,28 @@
     top: 2px;
   }
 }
+
+// Title of Chatroom
+
+.card.title {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 50%;
+  border: none !important;
+}
+
+.card .card-title {
+  margin: 0 auto;
+  text-align: center;
+}
+
+// Body of Chatroom
+
+.container.body {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.chatbox {
+  height: 450px !important;
+}
