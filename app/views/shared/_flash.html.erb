@@ -1,0 +1,8 @@
+<div class='mt-4'>
+  <% flash.each do |type, msg| %>
+    <%= tag.div(class: "alert alert-#{type} text-center alert-dismissible fade show", role: 'alert') do %>
+      <%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <% end %>
+  <% end %>
+</div>
