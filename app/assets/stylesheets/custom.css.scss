@@ -48,3 +48,63 @@
 .chatbox {
   height: 450px !important;
 }
+
+// form for messeges
+
+.messagesbox {
+  height: 330px !important;
+}
+
+
+.button-icon { 
+  border: 0; 
+  background: none;
+}
+
+// message
+
+em {
+  font-weight: bold;
+}
+
+// scroll
+
+.scroll {
+	overflow-y: scroll;
+	width: 100%;
+	margin: 10px 5px; padding: 5px;
+	text-align: justify;
+  height: 300px;
+}
+
+.scroll::-webkit-scrollbar {
+		width:5px;
+}
+
+.scroll::-webkit-scrollbar-track {
+		-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3); 
+		border-radius:5px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+		border-radius:5px;
+		-webkit-box-shadow: inset 0 0 6px red; 
+}
+
+// Session page
+
+.sessionbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sessionbox .col .item_box {
+  margin: 0 auto;
+  background-color: rgb(237, 237, 237);
+  height: 350px;
+}
+
+.sessionbox .col .item_box .text-center {
+  padding-top: 100px;
+}
