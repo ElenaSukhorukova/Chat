@@ -1,0 +1,29 @@
+<%= simple_form_for model, method: method, class: 'ui form', data: { turbo: false } do |f| %>
+  <div class="field">
+    <%= f.input :user_name, placeholder: attribute_model(f.object, :user_name), 
+        input_html: { class: 'mb-2' } %>
+  </div>
+  <div class="field">
+    <%= f.input :email, placeholder: attribute_model(f.object, :email), 
+        input_html: { class: 'mb-2' } %>
+  </div>
+  <% unless f.object.new_record? %>
+    <div class="field">
+      <%= f.input :old_password, placeholder: attribute_model(f.object, :old_password), 
+          input_html: { class: 'mb-2' } %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.input :password, placeholder: attribute_model(f.object, :password), 
+        input_html: { class: 'mb-2' } %>
+  </div>
+  <div class="field">
+    <%= f.input :password_confirmation, placeholder: attribute_model(f.object, :password_confirmation), 
+        input_html: { class: 'mb-2' } %>
+  </div>
+  <%= f.button :submit, 
+      f.object.new_record? ? t('.new.submit') : t('.edit.submit'), 
+      class: "ui blue submit button" %> 
+  <%= render partial: 'shared/cancel_button', 
+      locals: { path: user_path(f.object) } if f.object.persisted? %>	
+<% end %>

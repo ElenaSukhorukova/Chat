@@ -1,0 +1,7 @@
+<% provide :page_title, t('.title') %>
+
+<section class='container'>
+  <h1 class='mt-4'><%= t('.title') %></h1>
+
+  <%= render partial: 'form', locals: { model: @user, method: :put } %>
+</section>
