@@ -68,8 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    autoprefixer-rails (10.4.7.0)
-      execjs (~> 2)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.15.0)
       msgpack (~> 1.2)
@@ -92,14 +91,7 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
-    execjs (2.8.1)
     ffi (1.15.5)
-    fomantic-ui-sass (2.8.8.1)
-      autoprefixer-rails
-      railties (>= 3.2.0)
-      sassc (>= 2.2)
-      sassc-rails (>= 2.1)
-      sprockets-rails (>= 2.1.3)
     globalid (1.0.1)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -195,6 +187,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic-ui-sass (2.4.4.0)
+      sassc
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -213,6 +210,9 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    valid_email2 (4.0.4)
+      activemodel (>= 3.2)
+      mail (~> 2.5)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -234,11 +234,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   capybara
   cssbundling-rails (~> 1.1)
   debug
-  fomantic-ui-sass
   jbuilder
   jquery-rails (~> 4.4)
   jsbundling-rails
@@ -248,10 +248,13 @@ DEPENDENCIES
   redis (~> 4.0)
   sassc-rails
   selenium-webdriver
+  semantic-ui-sass (~> 2.4.4.0)
+  simple_form (~> 5.1.0)
   sprockets-rails
   stimulus-rails
   turbo-rails
   tzinfo-data
+  valid_email2 (~> 4.0.4)
   web-console
   webdrivers
 
