@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_26_114608) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_26_161257) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "user_name", null: false
@@ -20,8 +28,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_114608) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "remember_token"
+    t.string "remember_token_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "messages", "users"
 end
