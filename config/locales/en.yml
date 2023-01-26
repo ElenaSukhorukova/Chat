@@ -10,3 +10,18 @@ en:
       log_out: Log out
       log_in: Log in
       sign_up: Sign up
+  chatroom:
+    index:
+      title: Say somesing
+      form:
+        placeholder: Enter your message...
+  activerecord:
+    models:
+      user:
+        one: User
+        other: Users
+    attributes:
+      user:
+        user_name: User's name
+        email: Email
+        password_digest: Password

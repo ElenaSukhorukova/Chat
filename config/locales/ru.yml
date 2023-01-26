@@ -10,3 +10,20 @@ ru:
       log_out: Выйти
       log_in: Войти
       sign_up: Зарегистрироваться
+  chatroom:
+    index:
+      title: Скажи что-нибудь
+      form:
+        placeholder: Введи свое сообщение...
+  activerecord:
+    models:
+      user:
+        few: Пользователя
+        many: Пользователей
+        one: Пользователь
+        other: Пользователи
+    attributes:
+      user:
+        user_name: Имя пользователя
+        email: Электронная почта
+        password_digest: Пароль
