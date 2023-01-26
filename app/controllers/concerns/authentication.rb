@@ -60,7 +60,7 @@ module Authentication
     def require_authentication
       return if user_signed_in?
 
-      redirect_to root_path,
+      redirect_to new_session_path,
                   warning: I18n.t('global.flash.should_signed_in')
     end
 
