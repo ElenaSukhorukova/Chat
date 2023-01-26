@@ -20,8 +20,10 @@ en:
   chatroom:
     index:
       title: Say somesing
-      form:
-        placeholder: Enter your message...
+      you_should_enter: You should enter or registrate to send message
+  messages:
+    form:
+      placeholder: Enter your message...
   users:
     form:
       new: 
@@ -39,6 +41,8 @@ en:
   sessions:
     new:
       title: Sign in
+      greeting: Welcome to Chatroom
+      text: Log in to continue
       form:
         submit: Enter
     create:

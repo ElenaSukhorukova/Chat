@@ -20,8 +20,10 @@ ru:
   chatroom:
     index:
       title: Скажи что-нибудь
-      form:
-        placeholder: Введи свое сообщение...
+      you_should_enter: Вы должны войти или зарегистрироваться чтобы отправить сообщение
+  messages:
+    form:
+      placeholder: Введи свое сообщение...
   users:
     form:
       new:
@@ -39,6 +41,8 @@ ru:
   sessions:
     new:
       title: Вход
+      greeting: Добро пожаловать в Chatroom
+      text: Войди, чтобы продолжить
       form:
         submit: Войти
     create:
