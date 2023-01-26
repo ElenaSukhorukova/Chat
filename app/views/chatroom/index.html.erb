@@ -1,0 +1,44 @@
+<% provide :page_title, t('.title') %>
+
+<div class="card title">
+  <div class='card-title'>
+    <i class="bi bi-chat-dots-fill fs-1 yellow circular icon"></i>
+    <h4 class="ui center medium aligned icon header">
+      <%= t('.title') %>
+    </h4>
+  </div>
+</div>
+
+<div class='container body'>
+  <div class='row row-cols-2'>
+    <div class='col-9'>
+      <div class="card shadow p-3 mb-5 bg-body-tertiary rounded chatbox">
+        <div class='card-body'>
+          <div class='card-text'>
+            <div class='card messagesbox'>
+              <div class="card-body">
+                <div class="card-text">
+                  <div class='scroll'>
+                    <%= render @messages %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% if @user %>
+              <div class="extra content">
+                <%= render partial: 'messages/form', locals: { model: [@user, @user.messages.build] } %>
+              </div>
+            <% else %>
+              <p class='mt-2 text-center text-secondary'>
+                <%= t('.you_should_enter') %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col-3'>
+      <%= render 'members' %>
+    </div>
+  </div>
+</div>
