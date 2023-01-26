@@ -1,0 +1,41 @@
+<% provide :page_title, t('.title') %>
+
+<div class="ui placeholder segment mt-4">
+  <div class="ui two column very relaxed stackable grid">
+    <div class="column">
+      <%= form_with url: session_path, class: 'ui form' do |f| %>
+        <div class="field">
+          <%= f.label :email %>
+          <div class="ui left icon input">
+            <i class="bi bi-person mt-2 me-2"></i>
+            <%= f.email_field :email, placeholder: attribute_model(User.new, :email), 
+                value: params[:email] %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <div class="ui left icon input">
+            <i class="bi bi-lock mt-2 me-2"></i>
+            <%= f.password_field :password, placeholder: attribute_model(User.new, :password) %>
+          </div>
+        </div>
+        <div class="inline field">
+          <div class="ui checkbox">
+            <%= f.check_box :remember_me, class: "hidden", value: '1' %>
+            <%= f.label :remember_me %>
+          </div>
+        </div>
+        <%= f.submit t('.form.submit'), class: "ui blue submit button" %>
+      <% end %>
+    </div>
+    <div class="middle aligned column">
+      <%= link_to(new_user_path, class: "ui blue submit button") do %>
+        <i class="bi bi-pencil-square"></i>&nbsp;
+        <%= t('global.link.new_user') %>
+      <% end %>
+    </div>
+  </div>
+  <div class="ui vertical divider">
+    Or
+  </div>
+</div>
