@@ -10,11 +10,43 @@ ru:
       log_out: Выйти
       log_in: Войти
       sign_up: Зарегистрироваться
+      edit_user: Редактировать профиль
+    link:
+      new_user: Зарегистрироваться
+      cancel: Отменить
+    flash:
+      already_signed_in: Вы уже вошли
+      should_signed_in: Вы должны войти на сайт
   chatroom:
     index:
       title: Скажи что-нибудь
       form:
         placeholder: Введи свое сообщение...
+  users:
+    form:
+      new:
+        submit: Зарегистрироваться
+      edit:
+        submit: Сохранить
+    new:
+      title: Регистрация нового пользователя
+    create: 
+      flash: "Добро пожаловать, %{user_name}!"
+    edit:
+      title: Редактирование пользователя
+    update:
+      flash: Профиль пользователя был успешно обновлен
+  sessions:
+    new:
+      title: Вход
+      form:
+        submit: Войти
+    create:
+      flashes:
+        error: Некорректная почта или пароль
+        welcome: "Добро пожаловать обратно на наш сайт, %{user_name}"
+    destroy:
+      flash: Увидимся позже
   activerecord:
     models:
       user:
@@ -26,4 +58,23 @@ ru:
       user:
         user_name: Имя пользователя
         email: Электронная почта
-        password_digest: Пароль
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        old_password: Старый пароль
+    errors:
+      models:
+        user:
+          attributes:
+            user_name:
+              blank: не может быть пустым
+              too_short: слишком короткое
+            email:
+              blank: не может быть пустым
+              invalid: некоректный формат
+              taken: пользователь с таким email уже зарегестрирован
+            password:
+              password_complexity: 'требование сложности не выполнено. Длина должна быть от 8 до 70 символов и включать: 1 прописную, 1 строчную, 1 цифру и 1 специальный символ.'
+              blank: не может быть пустым
+              incorrect: некорректный
+            password_confirmation:
+              confirmation: не совпадает

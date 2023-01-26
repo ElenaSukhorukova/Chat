@@ -10,11 +10,43 @@ en:
       log_out: Log out
       log_in: Log in
       sign_up: Sign up
+      edit_user: Edit the profile
+    link:
+      new_user: Sign up
+      cancel: Cancel
+    flash:
+      already_signed_in: You've already singed in
+      should_signed_in: You should sign in
   chatroom:
     index:
       title: Say somesing
       form:
         placeholder: Enter your message...
+  users:
+    form:
+      new: 
+        submit: Registrate
+      edit:
+        submit: Save
+    new:
+      title: Registration of a new user
+    create: 
+      flash: "Welcome %{user_name}!"
+    edit:
+      title: Edition of the user
+    update:
+      flash: User's profile was updated successfully
+  sessions:
+    new:
+      title: Sign in
+      form:
+        submit: Enter
+    create:
+      flashes:
+        error: Incorrect email or password 
+        welcome: "Welcome back, %{user_name}" 
+    destroy:
+      flash: See you later
   activerecord:
     models:
       user:
@@ -24,4 +56,14 @@ en:
       user:
         user_name: User's name
         email: Email
-        password_digest: Password
+        password: Password
+        password_confirmation: Password confirmation
+        old_password: Old password
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              password_complexity: 'complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
+            old_password: 
+              incorrect: is incorrect
