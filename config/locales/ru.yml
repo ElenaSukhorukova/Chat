@@ -4,7 +4,7 @@ ru:
   site_name: Чат
   global:
     menu:
-      chatroom: Раздел чата
+      chatroom: Чаты
       messages: Сообщения
       account: Профиль
       log_out: Выйти
@@ -17,10 +17,24 @@ ru:
     flash:
       already_signed_in: Вы уже вошли
       should_signed_in: Вы должны войти на сайт
-  chatroom:
+  chatrooms:
+    form:
+      new: 
+        submit: Создать новую комнату чата
+      edit:
+        submit: Редактировать комнату чата
+    link:
+      new: Создать новый чат
+      edit: Редактировать чат
+      show: Показать чат
     index:
-      title: Скажи что-нибудь
+      title: Чаты
       you_should_enter: Вы должны войти или зарегистрироваться чтобы отправить сообщение
+      blank_chatrooms: Пока нет ни одного чата
+    show:
+      title: Скажи что-нибудь
+    new:
+      title: Создать чат
   messages:
     form:
       placeholder: Введи свое сообщение...
@@ -58,6 +72,21 @@ ru:
         many: Пользователей
         one: Пользователь
         other: Пользователи
+      message:
+        few: Сообщений
+        many: Сообщений
+        one: Сообщение
+        other: Сообщения
+      chatroom:
+        few: Комнат чатов
+        many: Комнат чатов
+        one: Комната чата
+        other: Комнаты чатов
+      like:
+        few: Лаков
+        many: Лаков
+        one: Лайк
+        other: Лайки
     attributes:
       user:
         user_name: Имя пользователя
@@ -65,6 +94,10 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
         old_password: Старый пароль
+      message:
+        body: Сообщение
+      chatroom:
+        chatroom_name: Название чата
     errors:
       models:
         user:

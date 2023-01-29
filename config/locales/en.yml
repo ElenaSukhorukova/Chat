@@ -4,7 +4,7 @@ en:
   site_name: Chat
   global:
     menu:
-      chatroom: Chatroom
+      chatroom: Chatrooms
       messages: Messages
       account: Account
       log_out: Log out
@@ -17,10 +17,24 @@ en:
     flash:
       already_signed_in: You've already singed in
       should_signed_in: You should sign in
-  chatroom:
+  chatrooms:
+    form:
+      new: 
+        submit: Create a new chatroom
+      edit:
+        submit: Edit the chatroom
+    link:
+      new: Create a new chatroom
+      edit: Edit the chatroom
+      show: Show the chatroom
     index:
-      title: Say somesing
+      title: Chatrooms
       you_should_enter: You should enter or registrate to send message
+      blank_chatrooms: There isn't any chatrooms yet
+    show:
+      title: Say somesing
+    new:
+      title: Create a chatroom
   messages:
     form:
       placeholder: Enter your message...
@@ -56,6 +70,15 @@ en:
       user:
         one: User
         other: Users
+      message:
+        one: Message
+        other: Messages
+      chatroom:
+        one: Chatroom
+        other: Chatrooms
+      like:
+        one: Like
+        other: Likes
     attributes:
       user:
         user_name: User's name
@@ -63,6 +86,10 @@ en:
         password: Password
         password_confirmation: Password confirmation
         old_password: Old password
+      message:
+        body: Сообщение
+      chatroom:
+        chatroom_name: Название чата
     errors:
       models:
         user:
