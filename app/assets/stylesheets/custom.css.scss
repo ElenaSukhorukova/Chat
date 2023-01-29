@@ -49,6 +49,11 @@
   height: 450px !important;
 }
 
+.blank_center {
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
 // form for messeges
 
 .messagesbox {
@@ -69,13 +74,24 @@ em {
 
 // scroll
 
-.scroll {
+.messagesbox .scroll {
 	overflow-y: scroll;
 	width: 100%;
-	margin: 10px 5px; padding: 5px;
+	margin: 10px 5px; 
+  padding: 5px;
 	text-align: justify;
   height: 300px;
 }
+
+.chatbox .scroll {
+	overflow-y: scroll;
+	width: 100%;
+	margin: 10px 5px; 
+  padding: 5px;
+	text-align: justify;
+  height: 400px;
+}
+
 
 .scroll::-webkit-scrollbar {
 		width:5px;
