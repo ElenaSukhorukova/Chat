@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_29_093018) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_29_095201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,11 +32,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_093018) do
     t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "message_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_likes_on_message_id"
+    t.index ["user_id", "message_id"], name: "index_likes_on_user_id_and_message_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "chatroom_id", null: false
+    t.integer "likes_count", default: 0, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -51,5 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_093018) do
   end
 
   add_foreign_key "chatrooms", "users"
+  add_foreign_key "likes", "messages"
+  add_foreign_key "likes", "users"
+  add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
 end
