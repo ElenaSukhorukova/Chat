@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :messages, dependent: :destroy
   has_many :chatroom, dependent: :destroy
-
+  has_many :likes, dependent: :destroy
   has_many :chatroom_users, dependent: :destroy
   has_many :chatroom, through: :chatroom_users
 
