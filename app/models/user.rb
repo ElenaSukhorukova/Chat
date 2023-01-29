@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   attr_accessor :old_password, :remember_token
   has_secure_password validations: false
+
+  has_many :messages, dependent: :destroy
+  has_many :chatroom, dependent: :destroy
+
+  has_many :chatroom_users, dependent: :destroy
+  has_many :chatroom, through: :chatroom_users
+
   
   validates :user_name, presence: true, length: { in: 3..15 }
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': { mx: true }
