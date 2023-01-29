@@ -1,14 +1,3 @@
-<% provide :page_title, t('.title') %>
-
-<div class="card title">
-  <div class='card-title'>
-    <i class="bi bi-chat-dots-fill fs-1 yellow circular icon"></i>
-    <h4 class="ui center medium aligned icon header">
-      <%= t('.title') %>
-    </h4>
-  </div>
-</div>
-
 <div class='container body'>
   <div class='row row-cols-2'>
     <div class='col-9'>
@@ -17,8 +6,8 @@
           <div class='card-text'>
             <div class='card messagesbox'>
               <div class="card-body">
-                <div class="card-text">
-                  <div class='scroll'>
+                <div class="card-text scroll">
+                  <div id='message-container'>
                     <%= render @messages %>
                   </div>
                 </div>

@@ -1,0 +1,18 @@
+<div class="ui inverted segment">
+  <%= simple_form_for model, class: 'ui inverted form' do |f| %>
+    <div class="two fields">
+      <div class="field">
+        <%= f.input :chatroom_name, placeholder: attribute_model(f.object, :chatroom_name),
+            input_html: { class: 'mb-2' } %>
+      </div>
+
+      <div class="field">
+        <%= f.button :submit, 
+            f.object.new_record? ? t('.new.submit') : t('.edit.submit'), 
+            class: "ui blue submit button" %> 
+        <%= render partial: 'shared/cancel_button', 
+          locals: { path: root_path } if f.object.persisted? %>	
+      </div>
+    </div>
+  <% end %>
+</div>
