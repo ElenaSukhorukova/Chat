@@ -1,5 +1,5 @@
 <div class="ui inverted segment mt-2">
-  <%= form_with model: model, class: "ui inverted form" do |f| %>
+  <%= form_with model: model, class: "ui inverted form", remote: true do |f| %>
     <div class="field">
       <div class="ui fluid icon input">
         <%= f.text_field :body, placeholder: t('messages.form.placeholder') %>
