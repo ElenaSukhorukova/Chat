@@ -5,7 +5,7 @@ en:
   global:
     menu:
       chatroom: Chatrooms
-      messages: Messages
+      your_chatrooms: Your chatrooms
       account: Account
       log_out: Log out
       log_in: Log in
@@ -33,8 +33,16 @@ en:
       blank_chatrooms: There isn't any chatrooms yet
     show:
       title: Say somesing
+      become_participant: Become a participant
+      exit_from_participants: Not become a participant
+      blank_participants: There aren't participants yet
     new:
       title: Create a chatroom
+  chatrooms_users:
+    create:
+      success: You have become a participant of the chatroom
+    destroy:
+      success: You aren't a participant of the chatroom
   messages:
     form:
       placeholder: Enter your message...
@@ -87,7 +95,9 @@ en:
         password_confirmation: Password confirmation
         old_password: Old password
       message:
-        body: Сообщение
+        body: Message
+        user: Sender
+        likes_count: Count of likes
       chatroom:
         chatroom_name: Название чата
     errors:
