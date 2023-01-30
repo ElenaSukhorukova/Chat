@@ -9,7 +9,10 @@
           <%= link_to t('global.menu.chatroom'), root_path, class: "nav-link", 'aria-current': "page" %>
         </li>
         <li class="nav-item">
-          <%= link_to t('global.menu.messages'), '#', class: "nav-link" %>
+          <% if user_signed_in? %>
+            <%= link_to t('global.menu.your_chatrooms'), user_chatrooms_path, 
+                class: "nav-link" %>
+          <% end %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" 
