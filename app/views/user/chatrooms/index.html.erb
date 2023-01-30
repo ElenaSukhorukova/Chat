@@ -1,0 +1,33 @@
+<% provide :page_title, t('.title') %>
+
+<div class="card title">
+  <div class='card-title'>
+    <i class="bi bi-chat-dots-fill fs-1 yellow circular icon"></i>
+    <h4 class="ui center medium aligned icon header">
+      <%= t('.title') %>
+    </h4>
+  </div>
+</div>
+
+<% if @user %>
+  <%= link_to t('.link.new'), new_chatroom_path, class: "ui blue submit button mb-2" %>
+<% end %>
+
+<%= turbo_stream_from :chatrooms %>
+<div class='card shadow chatbox'>
+  <div class='card-body'>
+    <% if @chatrooms.try(:any?) %>
+      <div class='card-text scroll'>
+        <%= turbo_frame_tag :chatrooms do %>
+          <%= render partial: 'chatrooms/chatroom', collection: @chatrooms %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= render 'chatroom/blank' %>
+    <% end %>
+  </div>
+</div>
+
+<%= ChatroomUser.where(user: @user).each do |user| %>
+  <%= user %>
+<% end %>
