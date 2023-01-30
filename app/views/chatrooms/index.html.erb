@@ -10,17 +10,16 @@
 </div>
 
 <% if @user %>
-  <%= link_to t('.link.new'), new_user_chatroom_path(@user), 
-      class: "ui blue submit button mb-2" %>
+  <%= link_to t('.link.new'), new_chatroom_path, class: "ui blue submit button mb-2" %>
 <% end %>
-<div class='card chatbox'>
+
+<%= turbo_stream_from :chatrooms %>
+<div class='card shadow chatbox'>
   <div class='card-body'>
     <% if @chatrooms.try(:any?) %>
       <div class='card-text scroll'>
         <%= turbo_frame_tag :chatrooms do %>
-          <ul>
-            <%= render @chatrooms %>
-          </ul>
+          <%= render @chatrooms %>
         <% end %>
       </div>
     <% else %>

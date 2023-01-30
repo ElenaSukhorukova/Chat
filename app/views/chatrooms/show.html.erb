@@ -1,33 +1,63 @@
-<div class='container body'>
-  <div class='row row-cols-2'>
-    <div class='col-9'>
-      <div class="card shadow p-3 mb-5 bg-body-tertiary rounded chatbox">
-        <div class='card-body'>
-          <div class='card-text'>
-            <div class='card messagesbox'>
-              <div class="card-body">
-                <div class="card-text scroll">
-                  <div id='message-container'>
-                    <%= render @messages %>
+<% provide :page_title, @chatroom.chatroom_name %>
+<%= turbo_stream_from @chatroom %>
+
+<% if @users.find_by(id: @user.id).nil? %>
+  <h1 class='my-2 text-center'>
+    <%= @chatroom.chatroom_name %>
+    <%= button_to t('.become_participant'), chatroom_chatrooms_users_path(@chatroom), 
+        method: :post, class: "ui blue submit button" %>
+  </h1>
+<% else %>
+  <h1 class='my-2 text-center'>
+    <%= @chatroom.chatroom_name %><br />
+    <%= link_to t('.exit_from_participants'), chatroom_chatrooms_users_path(@chatroom), 
+        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "ui blue submit button" %>
+  </h1>
+  <div class='container body'>
+    <div class='row row-cols-2'>
+      <div class='col-9'>
+        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded chatbox">
+          <div class='card-body'>
+            <div class='card-text'>
+              <div class='card messagesbox'>
+                <div class="card-body">
+                  <div class="card-text scroll">
+                    <%= turbo_frame_tag :messages do %>
+                      <%= render @messages %>
+                    <% end %>
                   </div>
                 </div>
               </div>
+              <% if @user %>
+                <div class="extra content">
+                  <%= render partial: 'messages/form', locals: { model: [@chatroom, @message] } %>
+                </div>
+              <% else %>
+                <p class='mt-2 text-center text-secondary'>
+                  <%= t('.you_should_enter') %>
+                </p>
+              <% end %>
             </div>
-            <% if @user %>
-              <div class="extra content">
-                <%= render partial: 'messages/form', locals: { model: [@user, @user.messages.build] } %>
-              </div>
-            <% else %>
-              <p class='mt-2 text-center text-secondary'>
-                <%= t('.you_should_enter') %>
-              </p>
-            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class='col-3'>
+        <div class='card shadow p-3 mb-5 bg-body-tertiary rounded chatbox'>
+          <div class='card-body'>
+            <div class='card-text'>
+              <% if @users.try(:any?) %>
+                <div class="ui inverted vertical menu">
+                  <%= turbo_frame_tag :users do %>
+                    <%= render @users %>
+                  <% end %>
+                </div>
+              <% else %>
+                <p><%= t('chatroom.show.blank_participants') %></p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class='col-3'>
-      <%= render 'members' %>
-    </div>
   </div>
-</div>
+<% end %>
