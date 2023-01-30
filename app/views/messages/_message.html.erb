@@ -1,2 +1,8 @@
-<em class="speaker"><%= message.user.user_name %></em>:
-<span class="body"><%= message.body %></span><br/>
+<article>
+  <h4 class="ui header">
+    <em><%= message.user.user_name %></em>
+  </h4>
+  <%= message.body %>
+  <span class='message_date'><%= l(message.created_at, format: :short) %></span>
+  <%= message.likes_count %>
+</article>
