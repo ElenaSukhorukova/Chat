@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-    root 'chatrooms#index'
-    
-    resources :users, only: %i[new create edit update], shallow: true do 
-      resources :messages, only: %i[create]
-      resources :chatrooms
-    end
+    root :to => 'chatrooms#index'
 
     resource :session, only: %i[new create destroy]
-
-    mount ActionCable.server, at: '/cable'
-
+    resources :users, except: %i[index destroy]
+    
+    namespace :user do
+      resources :chatrooms, only: :index, param: :chatroom_name
+    end
+    
+    shallow do
+      resources :chatrooms, except: %i[index] do 
+        resources :messages, only: :create
+        resource :chatrooms_users, only: %i[create destroy]
+      end
+    end
+    resources :chatrooms, only: :index, param: :chatroom_name
   end
 end
