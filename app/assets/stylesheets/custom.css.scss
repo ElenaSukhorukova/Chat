@@ -72,9 +72,14 @@ em {
   font-weight: bold;
 }
 
+.message_date {
+  font-size: 75%; 
+  color: #999;
+}
+
 // scroll
 
-.messagesbox .scroll {
+.chatbox .messagesbox .scroll {
 	overflow-y: scroll;
 	width: 100%;
 	margin: 10px 5px; 
