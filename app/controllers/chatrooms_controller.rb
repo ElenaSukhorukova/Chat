@@ -1,13 +1,15 @@
 class ChatroomsController < ApplicationController
   before_action :require_authentication
   before_action :set_user!, except: %i[edit update]
-  before_action :set_chatroom!, except: %i[index]
+  before_action :set_chatroom!, except: %i[new create index]
+  before_action :set_users, only: :show
 
   def edit 
   end
 
   def update
     if @chatroom.update chatroom_params
+      @chatroom.broadcast_update_to :chatrooms
       redirect_to chatroom_path(@chatroom), success: t('.success')
     end
   end
@@ -30,7 +32,9 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @messages = Message.all.includes(:user)
+    @chatroom = Chatroom.find(params[:id])
+    @messages = @chatroom.messages.includes(:user)
+    @message = Message.new
   end
 
   private
@@ -40,7 +44,11 @@ class ChatroomsController < ApplicationController
   end
 
   def set_chatroom!
-    @chatroom = Chatroom.find_by(chatroom_name: params[:chatroom_name])
+    @chatroom = Chatroom.find params[:id]
+  end
+
+  def set_users
+    @users = @chatroom.users.order(:user_name)
   end
 
   def chatroom_params
