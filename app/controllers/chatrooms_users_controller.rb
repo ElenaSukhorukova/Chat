@@ -2,16 +2,20 @@ class ChatroomsUsersController < ApplicationController
   before_action :set_variables!
 
   def create
-    @chatroom.users << @user unless ChatroomUser.where(user: @user, chatroom: @chatroom).exists?
-    @chatroom.broadcast_append_to @chatroom.users
-    redirect_to chatroom_path(@chatroom), success: t('.success')
+    unless ChatroomUser.where(user: @user, chatroom: @chatroom).exists?
+      @users = @chatroom.users
+      @users << @user
+      @user.broadcast_append_to "chatroom_users"
+      redirect_to chatroom_path(@chatroom), success: t('.success')
+    end
   end
 
   def destroy
     @chatroom_user = ChatroomUser.find_by(user: @user, chatroom: @chatroom)
-    # debugger
     @chatroom_user.destroy
-    @chatroom.broadcast_remove_to @chatroom.users
+    @users = @chatroom.users 
+
+    @user.broadcast_remove_to "chatroom_users"
     redirect_to chatroom_path(@chatroom), success: t('.success')
   end
 
