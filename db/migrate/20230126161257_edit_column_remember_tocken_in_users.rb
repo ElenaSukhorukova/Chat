@@ -2,7 +2,15 @@
 
 class EditColumnRememberTockenInUsers < ActiveRecord::Migration[7.0]
   def change
-    remove_column(:users, :remember_token, :string)
-    add_column(:users, :remember_token_digest, :string)
+    reversible do |dir|
+      change_table :users, bulk: true do |t|
+        dir.up do
+          t.column :remember_token_digest, :string
+        end
+        dir.down do
+          t.remove :remember_token, :string
+        end
+      end
+    end
   end
 end

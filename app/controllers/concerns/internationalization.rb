@@ -3,6 +3,8 @@
 module Internationalization
   extend ActiveSupport::Concern
 
+  # rubocop:disable Metrics/BlockLength
+  # rubocop:disable Metrics/AbcSize
   included do
     around_action :swich_locale
 
@@ -28,6 +30,9 @@ module Internationalization
 
     # Adepted from https://github.com/rack/rack-contrib/blob/main/lib/rack/contrib/locale.rb
 
+    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/PerceivedComplexity
+
     def locale_from_headers
       header = request.env['HTTP_ACCEPT_LANGUAGE']
 
@@ -37,28 +42,33 @@ module Internationalization
         locale, quality = language_tag.split(/;q=/i)
         quality = quality ? quality.to_f : 1.0
         [locale, quality]
-      end.reject do |(locale, quality)|
+      end
+      locales = locales.reject do |(locale, quality)|
         locale == '*' || quality.zero?
-      end.sort_by do |(_, quality)|
-        quality
-      end.map(&:first)
+      end
+      locales = locales.sort_by { |(_, quality)| quality }.map(&:first)
 
       return if locales.empty?
 
       if I18n.enforce_available_locales
-        locale = locales.reverse.find { |locale| I18n.available_locales.any? { |al| match?(al, locale) } }
+        locale = locales.reverse.find { |locale2| I18n.available_locales.any? { |al| match?(al, locale2) } }
         I18n.available_locales.find { |al| match?(al, locale) } if locale
       else
         locales.last
       end
     end
 
-    def match?(s1, s2)
-      s1.to_s.casecmp(s2.to_s).zero?
+    # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
+
+    def match?(st1, st2)
+      st1.to_s.casecmp(st2.to_s).zero?
     end
 
     def default_url_options
       { locale: I18n.locale }
     end
   end
+  # rubocop:enable Metrics/BlockLength
+  # rubocop:enable Metrics/AbcSize
 end

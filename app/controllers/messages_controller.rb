@@ -14,11 +14,7 @@ class MessagesController < ApplicationController
     if @message.save
       @message.broadcast_append_to @chatroom, target: "#{dom_id(@chatroom)}_messages"
     else
-      @chatroom = Chatroom.find params[:chatroom_id]
-      @users = @chatroom.users.order(:user_name)
-      @message ||= @user.messages.build
-      @messages = @chatroom.messages.includes(:user)
-      render('chatrooms/show', status: :unprocessable_entity)
+      render_options
     end
   end
 
@@ -46,6 +42,14 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def render_options
+    @chatroom = Chatroom.find params[:chatroom_id]
+    @users = @chatroom.users.order(:user_name)
+    @message ||= @user.messages.build
+    @messages = @chatroom.messages.includes(:user)
+    render('chatrooms/show', status: :unprocessable_entity)
+  end
 
   def message_params
     params.require(:message).permit(:body).merge(chatroom: @chatroom)

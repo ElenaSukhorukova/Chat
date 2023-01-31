@@ -21,18 +21,13 @@ Chatroom.all.each do |chatroom|
 
     chatroom.users << user unless ChatroomUser.find_by(user: user, chatroom: chatroom)
   end
-end
-
-Chatroom.all.each do |chatroom|
-  (15 - chatroom.messages.count).times do |_i|
+  (15 - chatroom.messages.count).times do
     user = chatroom.users.find_by id: chatroom.users.ids.sample
     body = Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 3)
 
     Message.create! user: user, body: body, chatroom: chatroom
   end
-end
 
-Chatroom.all.each do |chatroom|
   chatroom.users.each do |user|
     chatroom.messages.each do |message|
       Like.create! message: message, user: user unless Like.find_by message: message, user: user
