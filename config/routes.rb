@@ -6,17 +6,17 @@ Rails.application.routes.draw do
     resources :users, except: %i[index destroy]
     
     namespace :user do
-      resources :chatrooms, only: :index, param: :chatroom_name
+      resources :chatrooms, only: :index
     end
     
     shallow do
       resources :chatrooms, except: %i[index] do 
         resources :messages, only: :create do 
-          resources :likes, only: %i[create destroy]
+          member { post :like }
         end
         resource :chatrooms_users, only: %i[create destroy]
       end
     end
-    resources :chatrooms, only: :index, param: :chatroom_name
+    resources :chatrooms, only: :index
   end
 end
