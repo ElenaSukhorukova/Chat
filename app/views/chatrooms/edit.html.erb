@@ -1,0 +1,5 @@
+<% provide :page_title, t('.title', chatroom: @chatroom.chatroom_name) %>
+
+<h1><%= t('.title', chatroom: @chatroom.chatroom_name) %></h1>
+
+<%= render partial: 'form', locals: { model: @chatroom } %>
