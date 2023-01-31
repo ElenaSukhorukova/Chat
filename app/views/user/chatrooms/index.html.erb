@@ -5,13 +5,12 @@
     <i class="bi bi-chat-dots-fill fs-1 yellow circular icon"></i>
     <h4 class="ui center medium aligned icon header">
       <%= t('.title') %>
+       <% if @user %>
+        <%= link_to t('.link.new'), new_chatroom_path, class: "ui blue submit button mb-2 mx-2" %>
+      <% end %>
     </h4>
   </div>
 </div>
-
-<% if @user %>
-  <%= link_to t('.link.new'), new_chatroom_path, class: "ui blue submit button mb-2" %>
-<% end %>
 
 <%= turbo_stream_from :chatrooms %>
 <div class='card shadow chatbox'>
