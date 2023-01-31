@@ -2,15 +2,42 @@
   number = rand(1..50)
   user_name = Faker::Name.first_name
   email = "email#{number}@email.com"
-  password_digest = '123Test123!+'
+  password = '123Test123!+'
   
-  unless User.find_by(email: email)
-    User.create! user_name: user_name, email: email, password_digest: password_digest
+  unless User.find_by email: email
+    User.create! user_name: user_name, email: email, password: password
   end
 end
 
-(35 - Message.count).times do |i|
+(10 - Chatroom.count).times do 
+  chatroom_name = Faker::Hobby.activity
   user = User.find User.ids.sample
-  body = Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 3)
-  Message.create! user: user, body: body
+  unless Chatroom.find_by chatroom_name: chatroom_name
+    Chatroom.create! chatroom_name: chatroom_name, user: user
+  end
+end
+
+Chatroom.all.each do |chatroom|
+  (8 - chatroom.users.count).times do 
+    user = User.find(User.ids.sample)
+
+    chatroom.users << user unless ChatroomUser.find_by(user: user, chatroom: chatroom)
+  end
+end
+
+Chatroom.all.each do |chatroom|
+  (15 - chatroom.messages.count).times do |i|
+    user = chatroom.users.find_by id: chatroom.users.ids.sample
+    body = Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 3)
+    
+    Message.create! user: user, body: body, chatroom: chatroom
+  end
+end
+
+Chatroom.all.each do |chatroom|
+  chatroom.users.each do |user|
+    chatroom.messages.each do |message|
+      Like.create! message: message, user: user unless Like.find_by message: message, user: user
+    end
+  end
 end
