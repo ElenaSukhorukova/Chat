@@ -46,7 +46,7 @@
 }
 
 .chatbox {
-  height: 450px !important;
+  height: 500px !important;
 }
 
 .blank_center {
@@ -57,9 +57,8 @@
 // form for messeges
 
 .messagesbox {
-  height: 330px !important;
+  height: 350px !important;
 }
-
 
 .button-icon { 
   border: 0; 
@@ -75,6 +74,10 @@ em {
 .message_date {
   font-size: 75%; 
   color: #999;
+}
+
+.message_body {
+  padding: 20px;
 }
 
 // scroll
@@ -94,7 +97,7 @@ em {
 	margin: 10px 5px; 
   padding: 5px;
 	text-align: justify;
-  height: 400px;
+  height: 450px;
 }
 
 
@@ -128,4 +131,22 @@ em {
 
 .sessionbox .col .item_box .text-center {
   padding-top: 100px;
+}
+
+.text-red {
+  color: red;
+}
+
+// users
+.vertical.menu {
+  width: 60% !important;
+}
+
+.vertical.menu .item {
+  height: 40px !important;
+}
+
+.user_board {
+  border-bottom: 1px solid #eeeeee;
+  padding: 10px;
 }
