@@ -27,6 +27,7 @@ ru:
       new: Создать новый чат
       edit: Редактировать чат
       show: Показать чат
+      delete: Удалить чат
     index:
       title: Чаты
       you_should_enter: Вы должны войти или зарегистрироваться чтобы отправить сообщение
@@ -38,11 +39,23 @@ ru:
       blank_participants: Пока нет участников
     new:
       title: Создать чат
+    create:
+      success: Чат успешно создан
+    edit:
+      title: "Редактировать %{chatroom}"
+    update:
+      success: Чат успешно обновлен
+    destroy:
+      success: Чат успешно удален
   chatrooms_users:
     create:
       success: Вы стали участником чата
     destroy:
       success: Вы перестали быть участником чата
+  user:
+    chatrooms:
+      index:
+        title: Ваши чаты
   messages:
     form:
       placeholder: Введи свое сообщение...

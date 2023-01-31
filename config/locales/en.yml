@@ -27,6 +27,7 @@ en:
       new: Create a new chatroom
       edit: Edit the chatroom
       show: Show the chatroom
+      delete: Delete the chatroom
     index:
       title: Chatrooms
       you_should_enter: You should enter or registrate to send message
@@ -38,11 +39,23 @@ en:
       blank_participants: There aren't participants yet
     new:
       title: Create a chatroom
+    create:
+      success: The chatroom have been created successfully
+    edit:
+      title: "Edit %{chatroom}"
+    update:
+      success: The chatroom have been updated successfully
+    destroy:
+      success: The chatroom have been deleted successfully
   chatrooms_users:
     create:
       success: You have become a participant of the chatroom
     destroy:
       success: You aren't a participant of the chatroom
+  user:
+    chatrooms:
+      index:
+        title: Your chatrooms
   messages:
     form:
       placeholder: Enter your message...
