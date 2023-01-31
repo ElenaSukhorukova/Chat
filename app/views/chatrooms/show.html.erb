@@ -40,7 +40,8 @@
                 <div class="card-body">
                   <div class="card-text scroll" id="chat-container">
                     <%= turbo_stream_from @chatroom %>
-                    <%= turbo_frame_tag :messages do %>
+                    <%= turbo_stream_from [@user, @chatroom] %>
+                    <%= tag.div id: "#{dom_id(@chatroom)}_messages" do %>
                       <%= render @messages %>
                     <% end %>
                   </div>
