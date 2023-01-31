@@ -38,7 +38,7 @@
             <div class='card-text'>
               <div class='card messagesbox'>
                 <div class="card-body">
-                  <div class="card-text scroll">
+                  <div class="card-text scroll" id="chat-container">
                     <%= turbo_stream_from @chatroom %>
                     <%= turbo_frame_tag :messages do %>
                       <%= render @messages %>

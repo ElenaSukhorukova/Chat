@@ -8,7 +8,6 @@ class MessagesController < ApplicationController
   
     if @message.save 
       @message.broadcast_append_to @message.chatroom
-      redirect_to chatroom_path(@chatroom)
     else
       @chatroom = Chatroom.find params[:chatroom_id]
       @users = @chatroom.users.order(:user_name)
