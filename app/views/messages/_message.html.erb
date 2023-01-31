@@ -1,8 +1,20 @@
-<article>
+<article class='message_body'>
   <h4 class="ui header">
     <em><%= message.user.user_name %></em>
+  <span class='message_date'><%= l(message.created_at, format: :short) %></span>
   </h4>
   <%= message.body %>
-  <span class='message_date'><%= l(message.created_at, format: :short) %></span>
-  <%= message.likes_count %>
+  <br />
+  <%= turbo_stream_from "messages_like" %>
+  <%= turbo_frame_tag :likes do %>
+    <% if message.likes.find_by(user: @user).present? %>
+      <%= link_to(like_path(message.likes.find_by(user: @user)), data: { turbo_method: :delete }) do %>
+        <%= likes(message) %>
+      <% end %>
+    <% else %>
+      <%= link_to(message_likes_path(message), data: { turbo_method: :post }) do %>
+        <%= likes(message) %>
+      <% end %>   
+    <% end %>
+  <% end %>
 </article>
