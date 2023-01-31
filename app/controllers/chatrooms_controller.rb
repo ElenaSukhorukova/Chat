@@ -45,8 +45,8 @@ class ChatroomsController < ApplicationController
 
   def destroy 
     return unless @chatroom.user == @user
-    return unless @question.destroy
-
+    
+    @chatroom.destroy
     @chatroom.broadcast_remove_to :chatrooms
     redirect_to root_path, success: t('.success')
   end
