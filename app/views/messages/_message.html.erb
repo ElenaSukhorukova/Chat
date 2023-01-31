@@ -5,8 +5,8 @@
   </h4>
   <%= message.body %>
   <br />
-  <%= turbo_stream_from "messages_like" %>
-  <%= turbo_frame_tag :likes do %>
+  <%= turbo_stream_from message, :likes %>
+  <%= tag.div id: "#{dom_id(message)}_likes" do %>
     <% if message.likes.find_by(user: @user).present? %>
       <%= link_to(like_path(message.likes.find_by(user: @user)), data: { turbo_method: :delete }) do %>
         <%= likes(message) %>
