@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     
     shallow do
       resources :chatrooms, except: %i[index] do 
-        resources :messages, only: :create
+        resources :messages, only: :create do 
+          resources :likes, only: %i[create destroy]
+        end
         resource :chatrooms_users, only: %i[create destroy]
       end
     end
