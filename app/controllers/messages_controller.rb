@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MessagesController < ApplicationController
   include ActionView::RecordIdentifier
   before_action :require_authentication
@@ -5,11 +7,12 @@ class MessagesController < ApplicationController
   def create
     @chatroom = Chatroom.find params[:chatroom_id]
     @user = current_user
-    return unless ChatroomUser.where(user: @user, chatroom: @chatroom).exists?
+    return unless ChatroomUser.exists?(user: @user, chatroom: @chatroom)
+
     @message = @user.messages.build message_params
-  
-    if @message.save 
-      @message.broadcast_append_to  @chatroom, target: "#{dom_id(@chatroom)}_messages"
+
+    if @message.save
+      @message.broadcast_append_to @chatroom, target: "#{dom_id(@chatroom)}_messages"
     else
       @chatroom = Chatroom.find params[:chatroom_id]
       @users = @chatroom.users.order(:user_name)
@@ -29,14 +32,14 @@ class MessagesController < ApplicationController
 
     @message.broadcast_replace_to(
       [@user, @chatroom],
-      target: "#{dom_id(@message)}_likes", 
+      target: "#{dom_id(@message)}_likes",
       locals: { message: @message, user: @user },
       partial: 'messages/heart'
     )
 
     @message.broadcast_replace_to(
       @chatroom,
-      target: "#{dom_id(@message)}_likes_count", 
+      target: "#{dom_id(@message)}_likes_count",
       locals: { message: @message },
       partial: 'messages/likes_count'
     )

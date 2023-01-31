@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   attr_accessor :old_password, :remember_token
+
   has_secure_password validations: false
 
   has_many :messages, dependent: :destroy
@@ -8,7 +11,6 @@ class User < ApplicationRecord
   has_many :chatroom_users, dependent: :destroy
   has_many :chatroom, through: :chatroom_users
 
-  
   validates :user_name, presence: true, length: { in: 3..15 }
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': { mx: true }
   validates :password, confirmation: true, allow_blank: true
@@ -25,9 +27,10 @@ class User < ApplicationRecord
     update_column :remember_token_digest, nil
     self.remember_token = nil
   end
-  
+
   def remember_token_authenticated?(remember_token)
-    return false unless remember_token_digest.present?
+    return false if remember_token_digest.blank?
+
     BCrypt::Password.new(remember_token_digest).is_password?(remember_token)
   end
 
@@ -41,19 +44,17 @@ class User < ApplicationRecord
   def correct_old_password
     return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
 
-    errors.add :old_password, I18n.t(:incorrect, scope: [:activerecord, :errors, 
-                                      :models, :user, :attributes, :password])
+    errors.add :old_password, I18n.t('activerecord.errors.models.user.attributes.password.incorrect')
   end
 
   def password_complexity
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/
-  
-    errors.add :password, I18n.t(:incorrect, scope: [:activerecord, :errors, 
-                                  :models, :user, :attributes, :old_password])
+
+    errors.add :password, I18n.t('activerecord.errors.models.user.attributes.old_password.incorrect')
   end
 
   def password_presence
-    errors.add(:password, :blank) unless password_digest.present?
+    errors.add(:password, :blank) if password_digest.blank?
   end
 end
