@@ -8,9 +8,13 @@ class ChatroomsController < ApplicationController
   end
 
   def update
+    return unless @chatroom.user == @user
+    
     if @chatroom.update chatroom_params
-      @chatroom.broadcast_update_to :chatrooms
+      @chatroom.broadcast_replace_to :chatrooms
       redirect_to chatroom_path(@chatroom), success: t('.success')
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -24,6 +28,8 @@ class ChatroomsController < ApplicationController
     if @chatroom.save
       @chatroom.broadcast_append_to :chatrooms
       redirect_to chatroom_path(@chatroom), success: t('.success')
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,6 +41,14 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @messages = @chatroom.messages.includes(:user)
     @message = Message.new
+  end
+
+  def destroy 
+    return unless @chatroom.user == @user
+    return unless @question.destroy
+
+    @chatroom.broadcast_remove_to :chatrooms
+    redirect_to root_path, success: t('.success')
   end
 
   private
