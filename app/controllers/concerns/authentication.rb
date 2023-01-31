@@ -16,7 +16,7 @@ module Authentication
 
     def user_from_token
       user = User.find_by(id: cookies.encrypted[:user_id])
-      token = cookies.encrypted[:remember_token]
+      token = cookies.encrypted[:remember_token_digest]
 
       return unless user&.remember_token_authenticated?(token)
 
@@ -26,14 +26,14 @@ module Authentication
 
     def remember(user)
       user.remember_me
-      cookies.encrypted[:remember_token] = { value: user.remember_token, expires: 2.weeks }
+      cookies.encrypted[:remember_token_digest] = { value: user.remember_token_digest, expires: 2.weeks }
       cookies.encrypted[:user_id] = { value: user.id, expires: 2.weeks }
     end
 
     def forget(user)
       user.forget_me
       cookies.delete :user_id
-      cookies.delete :remember_token
+      cookies.delete :remember_token_digest
     end
 
     def user_signed_in?
