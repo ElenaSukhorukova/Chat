@@ -2,7 +2,7 @@
 
 class ChatroomsController < ApplicationController
   before_action :require_authentication
-  before_action :set_user!, except: %i[edit update]
+  before_action :set_user!
   before_action :set_chatroom!, except: %i[new create index]
   before_action :set_users, only: :show
 

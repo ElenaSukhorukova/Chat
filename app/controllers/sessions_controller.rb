@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:email]
     if user&.authenticate(params[:password])
       sign_in user
+      remember(user) if params[:remember_me] == '1'
       redirect_to root_path,
                   success: t('.flashes.welcome', user_name: user.user_name)
     else
@@ -20,6 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to root_path, success: t('.flash')
+    redirect_to new_session_path, success: t('.flash')
   end
 end

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      remember(user) if params[:remember_me] == '1'
+      sign_in(@user)
       redirect_to root_path, success: t('.flash', user_name: @user.user_name)
     else
       render :new, status: :unprocessable_entity

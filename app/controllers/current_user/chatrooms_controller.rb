@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-module User
+module CurrentUser
   class ChatroomsController < ApplicationController
     before_action :require_authentication
 
     def index
       @user = current_user
-      @chatrooms = Chatroom.where(user: @user).order(:chatroom_name)
+      @chatrooms = Chatroom.where(id:
+        Chatroom.where(user: @user).pluck(:id).concat(ChatroomUser.where(user: @user).pluck(:chatroom_id)))
     end
   end
 end
