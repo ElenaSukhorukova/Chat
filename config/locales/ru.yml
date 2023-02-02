@@ -52,7 +52,7 @@ ru:
       success: Вы стали участником чата
     destroy:
       success: Вы перестали быть участником чата
-  user:
+  current_user:
     chatrooms:
       index:
         title: Ваши чаты

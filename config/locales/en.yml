@@ -23,20 +23,21 @@ en:
         submit: Create a new chatroom
       edit:
         submit: Edit the chatroom
-    link:
-      new: Create a new chatroom
-      edit: Edit the chatroom
-      show: Show the chatroom
-      delete: Delete the chatroom
     index:
       title: Chatrooms
       you_should_enter: You should enter or registrate to send message
       blank_chatrooms: There isn't any chatrooms yet
+      link: 
+        new: Create a new chatroom
     show:
       title: Say somesing
-      become_participant: Become a participant
-      exit_from_participants: Not become a participant
       blank_participants: There aren't participants yet
+      link:
+        edit: Edit the chatroom
+        show: Show the chatroom
+        delete: Delete the chatroom
+        become_participant: Become a participant
+        exit_from_participants: Not become a participant
     new:
       title: Create a chatroom
     create:
@@ -52,7 +53,7 @@ en:
       success: You have become a participant of the chatroom
     destroy:
       success: You aren't a participant of the chatroom
-  user:
+  current_user:
     chatrooms:
       index:
         title: Your chatrooms
@@ -112,7 +113,7 @@ en:
         user: Sender
         likes_count: Count of likes
       chatroom:
-        chatroom_name: Название чата
+        chatroom_name: Chatroom's name
     errors:
       models:
         user:
