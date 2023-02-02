@@ -6,7 +6,8 @@
   email = "email#{number}@email.com"
   password = '123Test123!+'
 
-  User.create! user_name: user_name, email: email, password: password unless User.find_by email: email
+  user = User.new user_name: user_name, email: email, password: password
+  user.save! if user.valid? && !User.find_by(email: email)
 end
 
 (10 - Chatroom.count).times do
