@@ -12,7 +12,7 @@
     <div class='card item_box'>
       <div class='card-body'>
         <div class='card-text form'>
-          <%= form_with url: session_path, class: 'ui form' do |f| %>
+          <%= form_with url: session_path, class: 'ui form', id: "session_form" do |f| %>
             <div class="field">
               <%= f.label :email %>
               <div class="ui left icon input">
