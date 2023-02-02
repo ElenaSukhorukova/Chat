@@ -1,5 +1,5 @@
 <div class="ui inverted segment">
-  <%= simple_form_for model, class: 'ui inverted form' do |f| %>
+  <%= simple_form_for model, class: 'ui inverted form', id: dom_id(model) do |f| %>
     <div class="two fields">
       <div class="field">
         <%= f.input :chatroom_name, placeholder: attribute_model(f.object, :chatroom_name),
