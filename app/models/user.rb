@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include Recoverable
   include Rememberable
 
-  attr_accessor :old_password, :remember_token
+  attr_accessor :old_password
 
   has_secure_password validations: false
 
