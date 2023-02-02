@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: %i[new create destroy]
     resources :users, except: %i[index destroy]
 
-    namespace :user do
+    namespace :current_user do
       resources :chatrooms, only: :index
     end
 
