@@ -1,4 +1,4 @@
-<article class='message_body'>
+<%= tag.article id: dom_id(message), class: 'message_body' do %>
   <h4 class="ui header">
     <em><%= message.user.user_name %></em>
   <span class='message_date'><%= l(message.created_at, format: :short) %></span>
@@ -6,10 +6,10 @@
   <%= message.body %>
   <br />
   
-  <%= link_to(like_message_url(message), data: { turbo_method: :post }) do %>
+  <%= link_to(like_message_url(message), data: { turbo_method: :post }, id: dom_id(Like.new)) do %>
     <div class='ui labeled button', tabindex="0">
       <%= render partial: 'messages/heart', locals: { message: message, user: @user } %>
       <%= render partial: 'messages/likes_count', locals: { message: message } %>
     </div>
   <% end %>
-</article>
+<% end %>

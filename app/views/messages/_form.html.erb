@@ -1,9 +1,12 @@
 <div class="ui inverted segment mt-2">
-  <%= form_with model: model, class: "ui inverted form", data: { controller: "chat_refresh", action: "turbo:submit-end->chat_refresh#clearInput"} do |f| %>
+  <%= form_with model: model, class: "ui inverted form", id: dom_id(Message.new), data: { 
+      controller: "chat_refresh", 
+      action: "turbo:submit-end->chat_refresh#clearInput"
+      } do |f| %>
     <div class="field">
       <div class="ui fluid icon input">
         <%= f.text_field :body, placeholder: t('messages.form.placeholder') %>
-        <%= button_tag type: 'submit', class: 'button-icon' do %>
+        <%= button_tag type: 'submit', class: 'button-icon', id: "button_#{dom_id(Message.new)}" do %>
           <i class="bi bi-pencil-square text-warning fs-2"></i>
         <% end %>
       </div>
