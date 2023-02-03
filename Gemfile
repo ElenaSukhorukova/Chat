@@ -87,9 +87,9 @@ group :test do
   gem 'capybara'
   gem 'factory_bot_rails', '~> 6.2.0'
 
+  gem 'rails-controller-testing', '~>1.0.1'
   gem 'rubocop-rspec', '~> 2.16.0', require: false
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.3.0'
   gem 'webdrivers'
-  gem 'rails-controller-testing', '~>1.0.1'
 end

@@ -1,6 +1,8 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe "Chatroom management", :type => :request do
+require 'rails_helper'
+
+RSpec.describe 'Chatroom management' do
   let(:user) { create(:user) }
   let(:chatroom) { create(:chatroom) }
 
@@ -9,29 +11,29 @@ RSpec.describe "Chatroom management", :type => :request do
     get new_chatroom_path
 
     expect(response).to render_template(:new)
-  
+
     post chatrooms_path, params: { chatroom: { chatroom_name: 'Ho-ho and a bottle of rum' } }
-    chatroom = Chatroom.last 
+    chatroom = Chatroom.last
 
     expect(response).to redirect_to(chatroom_path(chatroom, locale: 'en'))
     follow_redirect!
 
     expect(response).to render_template(:show)
-    expect(response).to have_http_status(200)
+    expect(response).to have_http_status(:ok)
     expect(response.body).to include('Ho-ho and a bottle of rum')
   end
 
-  it "edits the Chatroom and redirect to the show page" do
-    log_in(user)  
+  it 'edits the Chatroom and redirect to the show page' do
+    log_in(user)
     get edit_chatroom_path(chatroom, locale: 'en')
-    
+
     put chatroom_path(chatroom), params: { chatroom: { chatroom_name: 'Happy New Year and Marry Christmas!' } }
-      
+
     expect(response).to redirect_to(chatroom_path(chatroom, locale: 'en'))
     follow_redirect!
 
     expect(response).to render_template(:show)
-    expect(response).to have_http_status(200)
+    expect(response).to have_http_status(:ok)
     expect(response.body).to include('Happy New Year and Marry Christmas!')
   end
 end
