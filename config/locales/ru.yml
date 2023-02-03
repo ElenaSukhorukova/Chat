@@ -33,7 +33,6 @@ ru:
       you_should_enter: Вы должны войти или зарегистрироваться чтобы отправить сообщение
       blank_chatrooms: Пока нет ни одного чата
     show:
-      title: Скажи что-нибудь
       become_participant: Стать участником
       exit_from_participants: Не быть участником
       blank_participants: Пока нет участников

@@ -15,7 +15,7 @@ en:
       new_user: Sign up
       cancel: Cancel
     flash:
-      already_signed_in: You've already singed in
+      already_signed_in: You have already singed in
       should_signed_in: You should sign in
   chatrooms:
     form:
@@ -26,12 +26,11 @@ en:
     index:
       title: Chatrooms
       you_should_enter: You should enter or registrate to send message
-      blank_chatrooms: There isn't any chatrooms yet
+      blank_chatrooms: There is not any chatrooms yet
       link: 
         new: Create a new chatroom
     show:
-      title: Say somesing
-      blank_participants: There aren't participants yet
+      blank_participants: There are not participants yet
       link:
         edit: Edit the chatroom
         show: Show the chatroom
@@ -52,7 +51,7 @@ en:
     create:
       success: You have become a participant of the chatroom
     destroy:
-      success: You aren't a participant of the chatroom
+      success: You are not a participant of the chatroom
   current_user:
     chatrooms:
       index:
@@ -73,7 +72,7 @@ en:
     edit:
       title: Edition of the user
     update:
-      flash: User's profile was updated successfully
+      flash: The profile of user was updated successfully
   sessions:
     new:
       title: Sign in
@@ -103,7 +102,7 @@ en:
         other: Likes
     attributes:
       user:
-        user_name: User's name
+        user_name: Name of the user
         email: Email
         password: Password
         password_confirmation: Password confirmation
@@ -113,7 +112,7 @@ en:
         user: Sender
         likes_count: Count of likes
       chatroom:
-        chatroom_name: Chatroom's name
+        chatroom_name: Name of the chatroom
     errors:
       models:
         user:
