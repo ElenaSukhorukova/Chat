@@ -11,6 +11,7 @@ en:
       log_in: Log in
       sign_up: Sign up
       edit_user: Edit the profile
+      telegram: "&#9990; @elenkasu"
     link:
       new_user: Sign up
       cancel: Cancel

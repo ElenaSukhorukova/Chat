@@ -150,3 +150,35 @@ em {
   border-bottom: 1px solid #eeeeee;
   padding: 10px;
 }
+
+// set footer
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  font-family: 'Lucida Console', monospace;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
+}
+
+.nav-link.footer-link {
+  color: #91959a !important;
+}
+.nav-link.footer-link:hover, .nav-link.footer-link:focus {
+  color: #c7cacd !important;
+}
+
+// set footer end

@@ -1,0 +1,17 @@
+<footer class="navbar navbar-expand-lg navbar-dark bg-dark footer" id="navigation">
+  <div class='container'>
+    <nav class="navbar navbar-expand-lg">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+          <li class="nav-item">
+            <%= link_to'https://t.me/elenkasu', 
+              class: "nav-link footer-link fs-6", target: :_blank, rel: 'noopener noreferrer' do %>
+              <%= sanitize(t('global.menu.telegram')) %>
+              <time datetime='<%= Time.now.year %>' class="fs-6"><%= Time.now.year %></time>
+            <% end %>
+          </li>       
+        </ul>
+      </div>
+    </nav>
+  </div>
+</footer>
